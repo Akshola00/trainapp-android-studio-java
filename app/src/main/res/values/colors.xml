@@ -3,4 +3,6 @@
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
     <color name="main">#BA68C8</color>
+    <color name="lilac">#c8a2c8</color>
+    <color name="silver">#c0c0c0</color>
 </resources>
