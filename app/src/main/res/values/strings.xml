@@ -2,4 +2,36 @@
     <string name="app_name">project</string>
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="search">Search\n</string>
+
+
+    <string-array name="from">
+        <item>lorem</item>
+        <item>lorem</item>
+        <item>lorem</item>
+        <item>lorem</item>
+    </string-array>
+
+    <string-array name="to">
+        <item>lorem</item>
+        <item>lorem</item>
+        <item>lorem</item>
+        <item>lorem</item>
+    </string-array>
+
+    <string-array name="timefrom">
+        <item>lorem</item>
+        <item>lorem</item>
+        <item>lorem</item>
+        <item>lorem</item>
+    </string-array>
+
+
+    <string-array name="timeto">
+        <item>lorem</item>
+        <item>lorem</item>
+        <item>lorem</item>
+        <item>lorem</item>
+    </string-array>
+
 </resources>
