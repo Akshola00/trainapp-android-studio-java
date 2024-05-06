@@ -32,10 +32,10 @@
                 app:layout_constraintHorizontal_bias="0.061"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
-                app:srcCompat="@drawable/p2" />
+                app:srcCompat="@drawable/train_40px" />
 
             <TextView
-                android:id="@+id/$200USD"
+                android:id="@+id/dyumht"
                 android:layout_width="143dp"
                 android:layout_height="32dp"
                 android:fontFamily="@font/ubuntu_mono"
