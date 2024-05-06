@@ -9,11 +9,12 @@
         android:layout_height="match_parent"
         android:orientation="vertical">
 
+
         <ImageView
             android:id="@+id/imageView2"
             android:layout_width="match_parent"
-            android:layout_height="277dp"
-            app:srcCompat="@drawable/p2" />
+            android:layout_height="256dp"
+            app:srcCompat="@drawable/p1" />
 
         <TextView
             android:id="@+id/textView3"
@@ -22,13 +23,26 @@
             android:gravity="center"
             android:fontFamily="@font/f3"
             android:textSize="30dp"
-            android:text="LOG IN" />
+            android:text="SIGN UP" />
 
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/signup_username"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginRight="15dp"
+            android:layout_marginLeft="15dp"
+            android:hint="Username">
 
+            <com.google.android.material.textfield.TextInputEditText
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                />
+
+        </com.google.android.material.textfield.TextInputLayout>
 
 
         <com.google.android.material.textfield.TextInputLayout
-            android:id="@+id/login_email"
+            android:id="@+id/signup_email"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginRight="15dp"
@@ -44,12 +58,12 @@
         </com.google.android.material.textfield.TextInputLayout>
 
         <com.google.android.material.textfield.TextInputLayout
-            android:id="@+id/login_password"
+            android:id="@+id/signup_password"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginRight="15dp"
-            android:inputType="textPassword"
             android:layout_marginTop="10dp"
+            android:inputType="textPassword"
             android:layout_marginLeft="15dp"
             android:hint="Password">
 
@@ -60,39 +74,46 @@
 
         </com.google.android.material.textfield.TextInputLayout>
 
-
-        <TextView
-            android:id="@+id/login_forgot_password"
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/signup_confirmpassword"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:fontFamily="sans-serif-smallcaps"
-            android:gravity="center"
-            android:paddingTop="15dp"
-            android:text="Forgot Password ?"
-            android:textColor="@color/main"
-            android:textSize="20sp" />
+            android:layout_marginRight="15dp"
+            android:layout_marginTop="10dp"
+            android:inputType="textPassword"
+            android:layout_marginLeft="15dp"
+            android:hint="Confirm Password">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                />
+
+        </com.google.android.material.textfield.TextInputLayout>
 
         <Button
-            android:id="@+id/login_submit"
+            android:id="@+id/signup_submit"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="15dp"
+            android:layout_marginTop="20dp"
+            android:layout_marginEnd="15dp"
+            android:background="@color/white"
+            android:text="SUBMIT" />
+
+        <Button
+            android:id="@+id/signup_continuewithgooogle"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginStart="15dp"
             android:layout_marginTop="10dp"
             android:layout_marginEnd="15dp"
-            android:text="SUBMIT" />
+            android:background="@color/white"
+            android:text="CONTINUE WITH GOOGLE" />
 
-        <ImageButton
-
-            android:layout_marginTop="20dp"
-            android:layout_marginStart="15dp"
-            android:layout_marginEnd="15dp"
-            android:id="@+id/login_continuewithgooogle"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            app:srcCompat="@drawable/google_48px" />
 
         <TextView
-            android:id="@+id/login_signuplink"
+            android:id="@+id/signup_loginlink"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginLeft="15dp"
@@ -100,9 +121,7 @@
             android:fontFamily="sans-serif-smallcaps"
             android:gravity="center"
             android:paddingTop="10dp"
-            android:text="Dont have an account ? Click to Sign up"
+            android:text="Don't have an account ? Click to Sign up"
             android:textSize="16sp" />
-
-
     </LinearLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>
