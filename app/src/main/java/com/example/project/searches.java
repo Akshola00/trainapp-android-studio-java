@@ -14,12 +14,14 @@ import java.util.ArrayList;
 
 public class searches extends RecyclerView.Adapter<searches.MyViewHolder> {
     Context context;
-    ArrayList<serach> searchs;
+    ArrayList<search> searchs;
 
-    public searches(Context context, ArrayList<serach> searchs) {
+    public searches(Context context, ArrayList<search> searchs) {
+        this.context = context;
+        this.searchs = searchs;
     }
 
-    public void searchadapter(Context context, ArrayList<serach> searchs){
+    public void searchadapter(Context context, ArrayList<search> searchs){
         this.context = context;
         this.searchs = searchs;
     }
@@ -54,7 +56,7 @@ public class searches extends RecyclerView.Adapter<searches.MyViewHolder> {
             tvfrom = itemView.findViewById(R.id.textView12);
             tvto = itemView.findViewById(R.id.textView14);
             tvtimefrom = itemView.findViewById(R.id.textView15);
-            tvtmieto = itemView.findViewById(R.id.imageView7);
+            tvtmieto = itemView.findViewById(R.id.textView16);
 
         }
     }

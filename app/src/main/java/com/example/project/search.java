@@ -1,6 +1,6 @@
 package com.example.project;
 
-public class serach {
+public class search {
     String from;
     String to;
     String timefrom;
@@ -27,7 +27,7 @@ public class serach {
         return price;
     }
 
-    public serach(String from, String to, String timefrom, String timeto) {
+    public search(String from, String to, String timefrom, String timeto) {
         this.from = from;
         this.to = to;
         this.timefrom = timefrom;

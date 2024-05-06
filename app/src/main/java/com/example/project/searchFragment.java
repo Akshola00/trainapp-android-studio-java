@@ -13,7 +13,7 @@ import android.view.ViewGroup;
 import java.util.ArrayList;
 
 public class searchFragment extends Fragment {
-    ArrayList<serach> searchs = new ArrayList<>();
+    ArrayList<search> searchs = new ArrayList<>();
     private static final String ARG_PARAM1 = "param1";
     private static final String ARG_PARAM2 = "param2";
 
@@ -61,7 +61,7 @@ public class searchFragment extends Fragment {
         String[] timeto = getResources().getStringArray(R.array.timeto);
 
         for (int i = 0; i<from.length; i++){
-            searchs.add(new serach(from[i], to[i], timefrom[i], timeto[i]));
+            searchs.add(new search(from[i], to[i], timefrom[i], timeto[i]));
         }
     }
 }
