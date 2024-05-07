@@ -68,9 +68,16 @@
             android:fontFamily="sans-serif-smallcaps"
             android:gravity="center"
             android:paddingTop="15dp"
+            android:paddingBottom="10px"
             android:text="Forgot Password ?"
             android:textColor="@color/main"
             android:textSize="20sp" />
+
+        <ProgressBar
+            android:id="@+id/login_progressBar"
+            style="?android:attr/progressBarStyle"
+            android:layout_width="match_parent"
+            android:layout_height="25dp" />
 
         <Button
             android:id="@+id/login_submit"

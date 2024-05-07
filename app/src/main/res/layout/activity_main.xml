@@ -36,7 +36,7 @@
         app:layout_constraintVertical_bias="0.08" />
 
     <ImageView
-        android:id="@+id/imageView"
+        android:id="@+id/welcome_gobtn"
         android:layout_width="109dp"
         android:layout_height="101dp"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -45,5 +45,6 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView2"
         app:layout_constraintVertical_bias="0.413"
-        app:srcCompat="@android:drawable/btn_star_big_on" />
+        android:src="@drawable/rocket_40px" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>
