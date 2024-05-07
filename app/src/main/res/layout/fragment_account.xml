@@ -21,7 +21,7 @@
             app:srcCompat="@drawable/orange" />
 
         <TextView
-            android:id="@+id/textView9"
+            android:id="@+id/accountfrag_username"
             android:layout_width="254dp"
             android:layout_height="40dp"
             android:fontFamily="sans-serif-smallcaps"
@@ -44,10 +44,10 @@
             android:text="/@akinniyishola@gmail.com"
             android:textSize="18sp"
             android:textStyle="bold"
-            app:layout_constraintEnd_toEndOf="@+id/textView9"
+            app:layout_constraintEnd_toEndOf="@+id/accountfrag_username"
             app:layout_constraintHorizontal_bias="0.0"
-            app:layout_constraintStart_toStartOf="@+id/textView9"
-            app:layout_constraintTop_toBottomOf="@+id/textView9" />
+            app:layout_constraintStart_toStartOf="@+id/accountfrag_username"
+            app:layout_constraintTop_toBottomOf="@+id/accountfrag_username" />
 
         <ScrollView
             android:layout_width="399dp"
@@ -76,6 +76,7 @@
                     android:textStyle="bold" />
 
                 <RelativeLayout
+                    android:id="@+id/accountfrag_logoutR"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content">
 
@@ -87,6 +88,7 @@
                         android:src="@drawable/log" />
 
                     <TextView
+                        android:id="@+id/accountfrag_logout"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_centerVertical="true"
