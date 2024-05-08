@@ -31,7 +31,7 @@ public class accountFragment extends Fragment {
 
     // TODO: Rename and change types of parameters
     private String mParam1;
-    TextView accountfrag_logout, accountfrag_username;
+    TextView accountfrag_logout, accountfrag_username,accountfrag_email;
     FirebaseAuth auth;
     FirebaseUser user;
 
@@ -84,6 +84,7 @@ public class accountFragment extends Fragment {
         auth = FirebaseAuth.getInstance();
         accountfrag_logout = view.findViewById(R.id.accountfrag_logout);
         accountfrag_username = view.findViewById(R.id.accountfrag_username);
+        accountfrag_email = view.findViewById(R.id.accountfrag_email);
         user = auth.getCurrentUser();
         if (user == null){
             Toast.makeText(getActivity(), "Please Login to access Home page", Toast.LENGTH_SHORT).show();
@@ -91,7 +92,9 @@ public class accountFragment extends Fragment {
             startActivity(intent);
             requireActivity().finish();
         } else {
-            accountfrag_username.setText("Welcome" + user.getEmail());
+            accountfrag_username.setText("Welcome " + user.getEmail());
+            accountfrag_email.setText("@" + user.getEmail());
+
         }
         accountfrag_logout.setOnClickListener(new View.OnClickListener() {
             @Override

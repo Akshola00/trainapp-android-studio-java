@@ -71,19 +71,19 @@ public class Signup extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 // Find TextInputLayouts
-                TextInputLayout usernameInputLayout = findViewById(R.id.signup_username);
+//                TextInputLayout usernameInputLayout = findViewById(R.id.signup_username);
                 TextInputLayout emailInputLayout = findViewById(R.id.signup_email);
                 TextInputLayout passwordInputLayout = findViewById(R.id.signup_password);
                 TextInputLayout confirmPasswordInputLayout = findViewById(R.id.signup_confirmpassword);
 
                 // Find TextInputEditTexts inside TextInputLayouts
-                TextInputEditText usernameEditText = (TextInputEditText) usernameInputLayout.getEditText();
+//                TextInputEditText usernameEditText = (TextInputEditText) usernameInputLayout.getEditText();
                 TextInputEditText emailEditText = (TextInputEditText) emailInputLayout.getEditText();
                 TextInputEditText passwordEditText = (TextInputEditText) passwordInputLayout.getEditText();
                 TextInputEditText confirmPasswordEditText = (TextInputEditText) confirmPasswordInputLayout.getEditText();
 
                 // Retrieve values
-                signup_username = usernameEditText.getText().toString().trim();
+//                signup_username = usernameEditText.getText().toString().trim();
                 signup_email = emailEditText.getText().toString().trim();
                 signup_password = passwordEditText.getText().toString().trim();
                 signup_confirmpassword = confirmPasswordEditText.getText().toString().trim();

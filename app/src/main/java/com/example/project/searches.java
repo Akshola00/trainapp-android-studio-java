@@ -52,7 +52,7 @@ public class searches extends RecyclerView.Adapter<searches.MyViewHolder> {
         public MyViewHolder(@NonNull View itemView) {
             super(itemView);
 
-            imageView = itemView.findViewById(R.id.imageView7);
+//            imageView = itemView.findViewById(R.id.imageView7);
             tvfrom = itemView.findViewById(R.id.textView12);
             tvto = itemView.findViewById(R.id.textView14);
             tvtimefrom = itemView.findViewById(R.id.textView15);

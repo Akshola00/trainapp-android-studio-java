@@ -22,11 +22,12 @@
 
         <TextView
             android:id="@+id/accountfrag_username"
-            android:layout_width="254dp"
-            android:layout_height="40dp"
+            android:layout_width="322dp"
+            android:layout_height="35dp"
+            android:layout_marginStart="15dp"
             android:fontFamily="sans-serif-smallcaps"
             android:text="Welcome, Akinshola"
-            android:textSize="24sp"
+            android:textSize="20sp"
             android:textStyle="bold"
             app:layout_constraintBottom_toBottomOf="@+id/imageView3"
             app:layout_constraintEnd_toEndOf="parent"
@@ -36,7 +37,7 @@
             app:layout_constraintVertical_bias="0.186" />
 
         <TextView
-            android:id="@+id/textView10"
+            android:id="@+id/accountfrag_email"
             android:layout_width="298dp"
             android:layout_height="39dp"
             android:layout_marginTop="4dp"
