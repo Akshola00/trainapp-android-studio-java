@@ -1,19 +1,44 @@
 package com.example.project;
 
+import android.app.AlertDialog;
+import android.content.DialogInterface;
 import android.os.Bundle;
 
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
+import androidx.appcompat.widget.SearchView;
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
+import android.widget.ImageButton;
+
+
+import com.android.volley.AuthFailureError;
+import com.android.volley.Request;
+import com.android.volley.Response;
+import com.android.volley.VolleyError;
+import com.android.volley.toolbox.JsonObjectRequest;
+import com.android.volley.toolbox.Volley;
+
+import org.json.JSONException;
+import org.json.JSONObject;
 
 import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Map;
 
 public class searchFragment extends Fragment {
-    ArrayList<search> searchs = new ArrayList<>();
+    SearchView accfrag_from, accfrag_to;
+    ImageButton accfrag_switch;
+    Button accfrag_searchbtn;
+
+    ArrayList<search> searchValuesModels = new ArrayList<search>();
     private static final String ARG_PARAM1 = "param1";
     private static final String ARG_PARAM2 = "param2";
 
@@ -22,6 +47,67 @@ public class searchFragment extends Fragment {
 
     public searchFragment() {
         // Required empty public constructor
+    }
+    public void showAlertDialouge(String Message){
+        AlertDialog alertDialog = new AlertDialog.Builder(getActivity()).setTitle("Oops, Something went Wrong !").setMessage(Message).setPositiveButton("OK", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialogInterface, int i) {
+                dialogInterface.dismiss();
+            }
+        }).create();
+        alertDialog.show();
+    }
+    @Override
+    public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
+        String url = "https://irctc1.p.rapidapi.com/api/v3/trainBetweenStations?fromStationCode=BVI&toStationCode=NDLS&dateOfJourney=2024-05-14";
+
+        super.onViewCreated(view, savedInstanceState);
+        accfrag_from = view.findViewById(R.id.accfrag_from);
+        accfrag_to = view.findViewById(R.id.accfrag_to);
+        accfrag_switch = view.findViewById(R.id.accfrag_switch);
+        accfrag_searchbtn = view.findViewById(R.id.accfrag_searchbtn);
+        accfrag_searchbtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                showAlertDialouge("Response: " + "Hold on");
+                Log.d("searchFragment", "Button clicked");
+
+                JsonObjectRequest request = new JsonObjectRequest(Request.Method.GET, url, null, new Response.Listener<JSONObject>() {
+                    @Override
+                    public void onResponse(JSONObject response) {
+                        try {
+                            String availabletrains = String.valueOf(response.getJSONArray("data"));
+                            Log.d("searchFragment onresponse", availabletrains);
+
+                            showAlertDialouge("Response: " + availabletrains);
+
+                        } catch (JSONException e) {
+                            showAlertDialouge("An Error Occurred: " + e.toString());
+                            Log.d("searchFragment", String.valueOf(e));
+
+                        }
+                    }
+                }, new Response.ErrorListener() {
+                    @Override
+                    public void onErrorResponse(VolleyError error) {
+                        showAlertDialouge("An Error Occurred: " + error.toString());
+                        Log.d("searchFragment", String.valueOf(error));
+
+                    }
+                }) {
+                    @Override
+                    public Map<String, String> getHeaders() throws AuthFailureError {
+                        Map<String, String>  params = new HashMap<String, String>();
+                        params.put("X-RapidAPI-Key", "dd64e384b0msh7d23262b9eb48a7p15034ejsn17fad0555892");
+                        params.put("X-RapidAPI-Host", "irctc1.p.rapidapi.com");
+
+                        return params;
+                    }
+                };
+                Volley.newRequestQueue(getContext()).add(request);
+
+            }
+        });
     }
 
     public static searchFragment newInstance(String param1, String param2) {
@@ -40,7 +126,7 @@ public class searchFragment extends Fragment {
             mParam1 = getArguments().getString(ARG_PARAM1);
             mParam2 = getArguments().getString(ARG_PARAM2);
         }
-        setupsearch();
+        setupsearchValues();
     }
 
     @Override
@@ -48,20 +134,20 @@ public class searchFragment extends Fragment {
                              Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_search, container, false);
         RecyclerView recyclerView = view.findViewById(R.id.myrecyclerview);
-        searches adapter = new searches(getContext(), searchs);
+        searches adapter = new searches(getContext(), searchValuesModels);
         recyclerView.setAdapter(adapter);
         recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
         return view;
+
     }
 
-    private void setupsearch(){
-        String[] from = getResources().getStringArray(R.array.from);
-        String[] to = getResources().getStringArray(R.array.to);
-        String[] timefrom = getResources().getStringArray(R.array.timefrom);
-        String[] timeto = getResources().getStringArray(R.array.timeto);
+    private void setupsearchValues(){
+        String[] head = getResources().getStringArray(R.array.head);
+        String[] body = getResources().getStringArray(R.array.body);
+        String[] price = getResources().getStringArray(R.array.price);
 
-        for (int i = 0; i<from.length; i++){
-            searchs.add(new search(from[i], to[i], timefrom[i], timeto[i]));
+        for (int i = 0; i<head.length; i++){
+            searchValuesModels.add(new search(head[i], body[i], price[i]));
         }
     }
 }

@@ -2,14 +2,16 @@
     <!-- Shadow layer -->
     <item>
         <shape android:shape="rectangle">
-            <solid android:color="#EEEEEE" /> <!-- Background color -->
-            <corners android:radius="20dp" /> <!-- Adjust corner radius as needed -->
+            <solid android:color="#EEEEEE" />
+            <corners android:radius="20dp" />
         </shape>
     </item>
     <item>
         <shape android:shape="rectangle">
-            <corners android:radius="20dp" /> <!-- Adjust corner radius as needed -->
-            <solid android:color="#33000000" /> <!-- Shadow color -->
+            <stroke android:width="5dp" android:color="@color/lilac" />
+
+            <corners android:radius="20dp" />
+            <solid android:color="#33000000" />
         </shape>
     </item>
 </layer-list>

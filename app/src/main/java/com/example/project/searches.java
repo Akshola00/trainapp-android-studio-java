@@ -35,10 +35,9 @@ public class searches extends RecyclerView.Adapter<searches.MyViewHolder> {
 
     @Override
     public void onBindViewHolder(@NonNull searches.MyViewHolder holder, int position) {
-        holder.tvfrom.setText((searchs.get(position).getFrom()));
-        holder.tvto.setText((searchs.get(position).getTo()));
-        holder.tvtimefrom.setText((searchs.get(position).getTimefrom()));
-        holder.tvtmieto.setText((searchs.get(position).getTimeto()));
+        holder.head.setText((searchs.get(position).getHead()));
+        holder.body.setText((searchs.get(position).getBody()));
+        holder.price.setText((searchs.get(position).getPrice()));
     }
 
     @Override
@@ -47,16 +46,16 @@ public class searches extends RecyclerView.Adapter<searches.MyViewHolder> {
     }
 
     public  static class MyViewHolder extends RecyclerView.ViewHolder{
-        ImageView imageView;
-        TextView tvfrom, tvto, tvtimefrom, tvtmieto;
+
+        TextView head, body, price;
         public MyViewHolder(@NonNull View itemView) {
             super(itemView);
 
 //            imageView = itemView.findViewById(R.id.imageView7);
-            tvfrom = itemView.findViewById(R.id.textView12);
-            tvto = itemView.findViewById(R.id.textView14);
-            tvtimefrom = itemView.findViewById(R.id.textView15);
-            tvtmieto = itemView.findViewById(R.id.textView16);
+            head = itemView.findViewById(R.id.head);
+            body = itemView.findViewById(R.id.body);
+            price = itemView.findViewById(R.id.price);
+
 
         }
     }

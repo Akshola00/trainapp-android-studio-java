@@ -1,37 +1,26 @@
 package com.example.project;
 
 public class search {
-    String from;
-    String to;
-    String timefrom;
-    String timeto;
-    int price;
 
-    public String getFrom() {
-        return from;
+    String head;
+    String body;
+    String price;
+
+    public String getHead() {
+        return head;
     }
 
-    public String getTo() {
-        return to;
+    public String getBody() {
+        return body;
     }
 
-    public String getTimefrom() {
-        return timefrom;
-    }
-
-    public String getTimeto() {
-        return timeto;
-    }
-
-    public int getPrice() {
+    public String getPrice() {
         return price;
     }
 
-    public search(String from, String to, String timefrom, String timeto) {
-        this.from = from;
-        this.to = to;
-        this.timefrom = timefrom;
-        this.timeto = timeto;
+    public search(String head, String body, String price) {
+        this.head = head;
+        this.body = body;
         this.price = price;
     }
 }
