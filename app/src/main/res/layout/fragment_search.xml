@@ -32,7 +32,7 @@
             android:textSize="20sp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            tools:layout_editor_absoluteY="16dp" />
+            app:layout_constraintTop_toTopOf="parent" />
 
         <LinearLayout
             android:id="@+id/linearLayout2"
@@ -43,7 +43,7 @@
             app:layout_constraintTop_toBottomOf="@+id/textView6">
 
             <androidx.appcompat.widget.SearchView
-                android:id="@+id/from"
+                android:id="@+id/accfrag_from"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_margin="8dp"
@@ -55,14 +55,14 @@
             </androidx.appcompat.widget.SearchView>
 
             <ImageButton
-                android:id="@+id/imageButton3"
+                android:id="@+id/accfrag_switch"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:background="@drawable/serachbg"
                 android:src="@drawable/change" />
 
             <androidx.appcompat.widget.SearchView
-                android:id="@+id/to"
+                android:id="@+id/accfrag_to"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_margin="8dp"
@@ -74,9 +74,10 @@
             </androidx.appcompat.widget.SearchView>
 
             <Button
-                android:id="@+id/button2"
-                android:layout_width="match_parent"
+                android:id="@+id/accfrag_searchbtn"
+                android:layout_width="345dp"
                 android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
                 android:background="@color/white"
                 android:fontFamily="@font/ubuntu_mono"
                 android:text="Search"
