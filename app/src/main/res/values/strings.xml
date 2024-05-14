@@ -31,6 +31,4 @@ $ adb shell am start -n "com.example.project/com.example.project.MainActivity" -
     </string-array>
 
 
-
-
 </resources>

@@ -6,6 +6,8 @@ public class search {
     String body;
     String price;
 
+
+
     public String getHead() {
         return head;
     }
@@ -18,7 +20,19 @@ public class search {
         return price;
     }
 
-    public search(String head, String body, String price) {
+    public void setHead(String head) {
+        this.head = head;
+    }
+
+    public void setBody(String body) {
+        this.body = body;
+    }
+
+    public void setPrice(String price) {
+        this.price = price;
+    }
+
+    public search() {
         this.head = head;
         this.body = body;
         this.price = price;
