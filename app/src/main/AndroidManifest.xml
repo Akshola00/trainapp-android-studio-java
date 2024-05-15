@@ -15,6 +15,9 @@
         android:theme="@style/Theme.Project"
         tools:targetApi="31">
         <activity
+            android:name=".payment"
+            android:exported="false" />
+        <activity
             android:name=".detailttrain"
             android:exported="false" />
         <activity
@@ -22,7 +25,7 @@
             android:exported="false" />
         <activity
             android:name=".dashboard"
-            android:exported="false"></activity>
+            android:exported="false" />
         <activity
             android:name=".Login"
             android:exported="false" />
