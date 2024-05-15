@@ -18,6 +18,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.ImageButton;
+import android.widget.Toast;
 
 
 import com.android.volley.AuthFailureError;
@@ -41,12 +42,14 @@ public class searchFragment extends Fragment implements recyclerviewinterface {
     Button accfrag_searchbtn;
 
     ArrayList<search> searchValuesModels = new ArrayList<search>();
+//    private recyclerviewinterface recyclerviewinterface;
     ArrayList<String> searchlist;
     private static final String ARG_PARAM1 = "param1";
     private static final String ARG_PARAM2 = "param2";
 
     private String mParam1;
     private String mParam2;
+
 
 
     public searchFragment() {
@@ -56,7 +59,8 @@ public class searchFragment extends Fragment implements recyclerviewinterface {
     @Override
     public void onItemClick (int position) {
         Intent intent = new Intent(getActivity(), detailttrain.class);
-
+        showAlertDialouge("Response: " + "just clicked a button");
+        Toast.makeText(getContext(), "lorem ipsum " + position, Toast.LENGTH_SHORT).show();
         intent.putExtra("head", searchValuesModels.get(position).getHead());
         intent.putExtra("body", searchValuesModels.get(position).getBody());
         intent.putExtra("price", searchValuesModels.get(position).getPrice());
@@ -76,7 +80,7 @@ public class searchFragment extends Fragment implements recyclerviewinterface {
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         int max=300,min=100;
 
-
+        final RecyclerView recyclerView = view.findViewById(R.id.myrecyclerview);
 
 
         String url = "https://irctc1.p.rapidapi.com/api/v3/trainBetweenStations?fromStationCode=BVI&toStationCode=NDLS&dateOfJourney=2024-05-15";
@@ -97,7 +101,6 @@ public class searchFragment extends Fragment implements recyclerviewinterface {
                     public void onResponse(JSONObject response) {
                         try {
                             JSONArray availabletrains = response.getJSONArray("data");
-//                            searchlist.clear();
                             for (int j = 0; j < availabletrains.length(); j++) {// Inside the onResponse method of your JsonObjectRequest
                                 JSONObject trainObject = availabletrains.getJSONObject(j);
                                 String trainName = trainObject.getString("train_name");
@@ -107,26 +110,22 @@ public class searchFragment extends Fragment implements recyclerviewinterface {
                                 String toStaTime = trainObject.getString("to_sta");
                                 String distanceKM = trainObject.getString("distance");
 
-// Create an instance of the search class and set its values
                                 search searchItem = new search();
                                 searchItem.setHead(trainName);
-// Combine other details into the body string
                                 String body = "From: " + fromStationName + " to " + toStationName
                                         + "\n Arrival: " + fromStaTime + " Departure: " + toStaTime
                                         + "\n Distance: " + distanceKM + "KM";
                                 searchItem.setBody(body);
-// Generate a random price (you can adjust this part according to your requirements)
+
                                 int intprice = min + (int)(Math.random() * ((max - min) + 1));
                                 String price = "$" + intprice + ".00";
                                 searchItem.setPrice(price);
 
-// Add the search item to the list
                                 searchValuesModels.add(searchItem);
 
                             }
-//                            RecyclerView recyclerView = view.findViewById(R.id.myrecyclerview);
-//                            searches adapter = new searches(getContext(), searchValuesModels);
-//                            recyclerView.setAdapter(adapter);
+                            searches adapter = new searches(getContext(), searchValuesModels, searchFragment.this);
+                            recyclerView.setAdapter(adapter);
                         } catch (JSONException e) {
                             showAlertDialouge("An Error Occurred: " + e.toString());
                             Log.d("searchFragment", String.valueOf(e));
@@ -142,7 +141,7 @@ public class searchFragment extends Fragment implements recyclerviewinterface {
                     @Override
                     public Map<String, String> getHeaders() throws AuthFailureError {
                         Map<String, String> params = new HashMap<String, String>();
-                        params.put("X-RapidAPI-Key", "bf717e30b2msh2c390739eaaaba6p14b9d3jsn1dba8b3ff79b");
+                        params.put("X-RapidAPI-Key", "da1f632e13msh98c3bdbdee4427cp1d6fd5jsnfe1d29bdd539");
                         params.put("X-RapidAPI-Host", "irctc1.p.rapidapi.com");
                         return params;
                     }
@@ -180,7 +179,7 @@ public class searchFragment extends Fragment implements recyclerviewinterface {
         RecyclerView recyclerView = view.findViewById(R.id.myrecyclerview);
 // Ensure recyclerView is not null before proceeding
         if (recyclerView != null) {
-            searches adapter = new searches(getContext(), searchValuesModels);
+            searches adapter = new searches(getContext(), searchValuesModels, this);
             recyclerView.setAdapter(adapter);
             recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
         } else {
