@@ -4,7 +4,6 @@ import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
@@ -13,20 +12,24 @@ import androidx.recyclerview.widget.RecyclerView;
 import java.util.ArrayList;
 
 public class searches extends RecyclerView.Adapter<searches.MyViewHolder> {
-    private recyclerviewinterface recyclerviewinterface;
+    private final recyclerviewinterface recyclerviewinterface;
     Context context;
     ArrayList<search> searchs;
 
-    public searches(Context context, ArrayList<search> searchs) {
+    public searches(Context context, ArrayList<search> searchs, searchFragment recyclerviewinterface) {
         this.context = context;
         this.searchs = searchs;
+        this.recyclerviewinterface = recyclerviewinterface;
     }
 
-    public void searchadapter(Context context, ArrayList<search> searchs, recyclerviewinterface recyclerviewinterface1){
-        this.context = context;
-        this.searchs = searchs;
-        this.recyclerviewinterface = recyclerviewinterface1;
-    }
+
+
+
+    //    public void searchadapter(Context context, ArrayList<search> searchs, recyclerviewinterface recyclerviewinterface1){
+//        this.context = context;
+//        this.searchs = searchs;
+//        this.recyclerviewinterface = recyclerviewinterface1;
+//    }
     @NonNull
     @Override
     public searches.MyViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
@@ -64,7 +67,7 @@ public class searches extends RecyclerView.Adapter<searches.MyViewHolder> {
                 @Override
                 public void onClick(View view) {
                     if (recyclerviewinterface != null) {
-                        int pos = getAdapterPosition();
+                        int pos = getAbsoluteAdapterPosition();
 
                         if (pos != RecyclerView.NO_POSITION) {
                             recyclerviewinterface.onItemClick(pos);

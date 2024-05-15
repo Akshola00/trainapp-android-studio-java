@@ -11,7 +11,6 @@ import android.text.TextUtils;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
-import android.widget.EditText;
 import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -72,7 +71,7 @@ public class Signup extends AppCompatActivity {
             public void onClick(View view) {
                 // Find TextInputLayouts
 //                TextInputLayout usernameInputLayout = findViewById(R.id.signup_username);
-                TextInputLayout emailInputLayout = findViewById(R.id.signup_email);
+                TextInputLayout emailInputLayout = findViewById(R.id.detailAge);
                 TextInputLayout passwordInputLayout = findViewById(R.id.signup_password);
                 TextInputLayout confirmPasswordInputLayout = findViewById(R.id.signup_confirmpassword);
 
