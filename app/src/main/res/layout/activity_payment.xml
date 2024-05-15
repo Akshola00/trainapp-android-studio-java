@@ -16,7 +16,7 @@
 
         <ImageView
             android:id="@+id/imageView4"
-            android:layout_width="140dp"
+            android:layout_width="131dp"
             android:layout_height="match_parent"
             app:srcCompat="@drawable/bckk" />
 
@@ -28,7 +28,7 @@
             android:layout_toEndOf="@+id/imageView4"
             android:fontFamily="@font/cambo"
             android:gravity="center"
-            android:text="Book A Ticket"
+            android:text="Payment"
             android:textSize="20sp"
             android:textStyle="bold" />
 
@@ -36,67 +36,16 @@
 
     <ImageView
         android:id="@+id/imageView6"
-        android:layout_width="411dp"
-        android:layout_height="118dp"
+        android:layout_width="364dp"
+        android:layout_height="104dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/relativeLayout"
-        app:srcCompat="@drawable/bgsearch" />
-
-    <ImageView
-        android:id="@+id/imageView"
-        android:layout_width="62dp"
-        android:layout_height="59dp"
-        android:layout_marginStart="16dp"
-        android:layout_marginTop="80dp"
-        android:src="@drawable/train_40px"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
-    <TextView
-        android:id="@+id/priceDetail"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="292dp"
-        android:layout_marginTop="72dp"
-        android:fontFamily="@font/kite_one"
-        android:text="TextView"
-        android:textColor="@color/white"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
-    <TextView
-        android:id="@+id/bodyDetail"
-        android:layout_width="264dp"
-        android:layout_height="47dp"
-        android:layout_marginEnd="28dp"
-        android:layout_marginBottom="584dp"
-        android:fontFamily="@font/cambo"
-        android:text="TextView"
-        android:textColor="@color/white"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.073"
-        app:layout_constraintStart_toEndOf="@+id/imageView" />
-
-    <TextView
-        android:id="@+id/headDetail"
-        android:layout_width="186dp"
-        android:layout_height="34dp"
-        android:layout_marginTop="72dp"
-        android:layout_marginEnd="92dp"
-        android:fontFamily="@font/rubik_medium"
-        android:text="TextView"
-        android:textColor="@color/white"
-        android:textSize="12sp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.421"
-        app:layout_constraintStart_toEndOf="@+id/imageView"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:srcCompat="@drawable/cradssec" />
 
     <LinearLayout
         android:layout_width="371dp"
-        android:layout_height="493dp"
+        android:layout_height="521dp"
         android:orientation="vertical"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -110,7 +59,7 @@
             android:layout_marginLeft="15dp"
             android:layout_marginTop="10dp"
             android:layout_marginRight="15dp"
-            android:hint="Enter Passanger Name">
+            android:hint="Card No.">
 
             <com.google.android.material.textfield.TextInputEditText
                 android:layout_width="match_parent"
@@ -119,13 +68,13 @@
         </com.google.android.material.textfield.TextInputLayout>
 
         <com.google.android.material.textfield.TextInputLayout
-            android:id="@+id/detailAge"
+            android:id="@+id/paymentName"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginLeft="15dp"
             android:layout_marginTop="10dp"
             android:layout_marginRight="15dp"
-            android:hint="Enter Passanger Age">
+            android:hint="Name on Card">
 
             <com.google.android.material.textfield.TextInputEditText
                 android:layout_width="match_parent"
@@ -134,13 +83,13 @@
         </com.google.android.material.textfield.TextInputLayout>
 
         <com.google.android.material.textfield.TextInputLayout
-            android:id="@+id/detailGender"
+            android:id="@+id/paymentExpiryDate"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginLeft="15dp"
             android:layout_marginTop="10dp"
             android:layout_marginRight="15dp"
-            android:hint="Enter Passanger Gender">
+            android:hint="Expiry Date">
 
             <com.google.android.material.textfield.TextInputEditText
                 android:layout_width="match_parent"
@@ -149,26 +98,28 @@
         </com.google.android.material.textfield.TextInputLayout>
 
         <com.google.android.material.textfield.TextInputLayout
-            android:id="@+id/detailPhone"
+            android:id="@+id/paymentCCV"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginLeft="15dp"
             android:layout_marginTop="10dp"
             android:layout_marginRight="15dp"
-            android:hint="Enter Passanger Phone Number">
+            android:hint="CCV">
 
             <com.google.android.material.textfield.TextInputEditText
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content" />
 
         </com.google.android.material.textfield.TextInputLayout>
+
         <Button
+            android:id="@+id/signup_submit"
             android:layout_width="match_parent"
-            android:id="@+id/detailSubmit"
-            android:layout_height="wrap_content" android:layout_marginStart="15dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="15dp"
             android:layout_marginTop="5dp"
             android:layout_marginEnd="15dp"
             android:background="@color/lilac"
-            android:text="SUBMIT"/>
+            android:text="CONFIRM PAYMENT" />
     </LinearLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>
