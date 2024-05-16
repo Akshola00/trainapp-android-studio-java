@@ -17,6 +17,8 @@ import android.widget.Toast;
 
 import com.google.android.material.textfield.TextInputEditText;
 import com.google.android.material.textfield.TextInputLayout;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 
 import java.util.ArrayList;
 import java.util.Date;
@@ -28,6 +30,8 @@ public class detailttrain extends AppCompatActivity {
     String ticketName, ticketAge, ticketGender, ticketPhoneNumber;
     Button save;
     TicketDatabase ticketDatabase;
+    FirebaseAuth auth;
+    FirebaseUser user;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -42,9 +46,13 @@ public class detailttrain extends AppCompatActivity {
         String body = getIntent().getStringExtra("body");
         String price = getIntent().getStringExtra("price");
         String date = "null";
+
         headDetail.setText(price); // oh = b op = h ob =p
         bodyDetail.setText(head);
         priceDetail.setText(body);
+        auth = FirebaseAuth.getInstance();
+        user = auth.getCurrentUser();
+        String cuser = user.getEmail();
 
         RoomDatabase.Callback myCallBack = new RoomDatabase.Callback() {
             @Override
@@ -80,7 +88,7 @@ public class detailttrain extends AppCompatActivity {
                 TextInputEditText detailPhoneText = (TextInputEditText) detailPhone.getEditText();
                 ticketPhoneNumber = detailPhoneText.getText().toString().trim();
 
-                Ticket t1 = new Ticket(head, body, price, date, ticketName, ticketAge, ticketPhoneNumber, ticketGender );
+                Ticket t1 = new Ticket(cuser, head, body, price, date, ticketName, ticketAge, ticketPhoneNumber, ticketGender );
 
                 addTicketInBakground(t1);
 
