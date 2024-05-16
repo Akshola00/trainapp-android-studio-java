@@ -1,6 +1,7 @@
 package com.example.project;
 
 import androidx.room.Dao;
+import androidx.room.Delete;
 import androidx.room.Insert;
 import androidx.room.Query;
 
@@ -20,4 +21,10 @@ public interface TicketDAO {
 
     @Query("SELECT * FROM ticket WHERE user = :user")
     public Ticket getTicket(int user);
+
+    @Query("DELETE FROM ticket")
+    void truncateTable();
+
+
+
 }

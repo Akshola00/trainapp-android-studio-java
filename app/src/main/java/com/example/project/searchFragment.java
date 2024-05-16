@@ -18,6 +18,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.ImageButton;
+import android.widget.ProgressBar;
 import android.widget.Toast;
 
 
@@ -39,6 +40,8 @@ import java.util.Map;
 public class searchFragment extends Fragment implements recyclerviewinterface {
     SearchView accfrag_from, accfrag_to;
     ImageButton accfrag_switch;
+
+    ProgressBar pgb;
     Button accfrag_searchbtn;
 
     ArrayList<search> searchValuesModels = new ArrayList<search>();
@@ -90,10 +93,14 @@ public class searchFragment extends Fragment implements recyclerviewinterface {
         accfrag_to = view.findViewById(R.id.accfrag_to);
         accfrag_switch = view.findViewById(R.id.accfrag_switch);
         accfrag_searchbtn = view.findViewById(R.id.accfrag_searchbtn);
+        pgb = view.findViewById(R.id.progressBar);
+        pgb.setVisibility(View.GONE);
         accfrag_searchbtn.setOnClickListener(new View.OnClickListener() {
+
             @Override
             public void onClick(View view) {
-                showAlertDialouge("Response: " + "Hold on");
+                pgb.setVisibility(View.VISIBLE);
+//                showAlertDialouge("Response: " + "Hold on");
                 Log.d("searchFragment", "Button clicked");
 
                 JsonObjectRequest request = new JsonObjectRequest(Request.Method.GET, url, null, new Response.Listener<JSONObject>() {
@@ -124,6 +131,7 @@ public class searchFragment extends Fragment implements recyclerviewinterface {
                                 searchValuesModels.add(searchItem);
 
                             }
+                            pgb.setVisibility(View.GONE);
                             searches adapter = new searches(getContext(), searchValuesModels, searchFragment.this);
                             recyclerView.setAdapter(adapter);
                         } catch (JSONException e) {
@@ -136,6 +144,7 @@ public class searchFragment extends Fragment implements recyclerviewinterface {
                     public void onErrorResponse(VolleyError error) {
                         showAlertDialouge("An Error Occurred: " + error.toString());
                         Log.d("searchFragment", String.valueOf(error));
+                        pgb.setVisibility(View.GONE);
                     }
                 }) {
                     @Override

@@ -90,7 +90,7 @@ public class detailttrain extends AppCompatActivity {
 
                 Ticket t1 = new Ticket(cuser, head, body, price, date, ticketName, ticketAge, ticketPhoneNumber, ticketGender );
 
-                addTicketInBakground(t1);
+                addTicketInBackground(t1);
 
                 Toast.makeText(detailttrain.this, "Save Button clicked", Toast.LENGTH_SHORT).show();
 
@@ -98,7 +98,7 @@ public class detailttrain extends AppCompatActivity {
         });
 
     }
-    public void addTicketInBakground(Ticket ticket){
+    public void addTicketInBackground(Ticket ticket){
         ExecutorService executorService = Executors.newSingleThreadExecutor();
 
         Handler handler = new Handler(Looper.getMainLooper());
@@ -106,17 +106,24 @@ public class detailttrain extends AppCompatActivity {
         executorService.execute(new Runnable() {
             @Override
             public void run() {
-                ticketDatabase.getTicketDAO().addTicket(ticket);
+                try {
+                    ticketDatabase.getTicketDAO().addTicket(ticket);
 
-                //
-                handler.post(new Runnable() {
-                    @Override
-                    public void run() {
-                        Toast.makeText(detailttrain.this, "Added to Database", Toast.LENGTH_SHORT).show();
-                        Intent intent = new Intent(getApplicationContext(), payment.class);
-                        startActivity(intent);
-                    }
-                });
+                    //
+                    handler.post(new Runnable() {
+                        @Override
+                        public void run() {
+                            Toast.makeText(detailttrain.this, "Added to Database", Toast.LENGTH_SHORT).show();
+                            Intent intent = new Intent(getApplicationContext(), payment.class);
+                            startActivity(intent);
+                        }
+                    });
+                } catch (Exception e) {
+                    // If a migration error occurs, recreate the database
+                    ticketDatabase = TicketDatabase.getInstance(getApplicationContext());
+                    // Retry adding the ticket
+                    ticketDatabase.getTicketDAO().addTicket(ticket);
+                }
             }
         });
     }

@@ -74,7 +74,6 @@ public class Login extends AppCompatActivity {
         login_submit.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Toast.makeText(Login.this, "Dolor Sit Amet", Toast.LENGTH_SHORT).show();
                 // Find TextInputLayouts
                 TextInputLayout emailInputLayout = findViewById(R.id.login_email);
                 TextInputLayout passwordInputLayout = findViewById(R.id.login_password);
@@ -86,7 +85,6 @@ public class Login extends AppCompatActivity {
                 // Retrieve email and password values
                 String email = emailEditText.getText().toString().trim();
                 String password = passwordEditText.getText().toString().trim();
-                Toast.makeText(Login.this, "Email: " + email + " Password: " + password, Toast.LENGTH_SHORT).show();
                 if (TextUtils.isEmpty(email)) {
                     Toast.makeText(Login.this, "Email Is Required", Toast.LENGTH_SHORT).show();
                     return;
@@ -105,7 +103,7 @@ public class Login extends AppCompatActivity {
                                 login_progressBar.setVisibility(View.GONE);
                                 if (task.isSuccessful()) {
                                     // Sign in success, update UI with the signed-in user's information
-                                    Toast.makeText(Login.this, "Authentication Successful.",
+                                    Toast.makeText(Login.this, "Authentication Successful, Welcome.",
                                             Toast.LENGTH_SHORT).show();
                                     Intent intent = new Intent(getApplicationContext(), dashboard.class);
                                     startActivity(intent);

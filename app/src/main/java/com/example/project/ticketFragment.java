@@ -81,34 +81,66 @@ public class ticketFragment extends Fragment {
         return inflater.inflate(R.layout.fragment_ticket, container, false);
 
     }
-    public void getTicketInBakground(){
-        ExecutorService executorService = Executors.newSingleThreadExecutor();
+//    public void getTicketInBakground(){
+//        ExecutorService executorService = Executors.newSingleThreadExecutor();
+//
+//        Handler handler = new Handler(Looper.getMainLooper());
+//
+//        executorService.execute(new Runnable() {
+//            @Override
+//            public void run() {
+//                ticketArrayList = ticketDatabase.getTicketDAO().getTicket();
+////                ticketDatabase.getTicketDAO().truncateTable();
+//
+//                //
+//                handler.post(new Runnable() {
+//                    @Override
+//                    public void run() {
+//
+//                        StringBuilder sb = new StringBuilder();
+//                        for (Ticket t : ticketArrayList){
+//                            sb.append(t.getPassanger_name() + " boarding: " +  t.train_body);
+//                            sb.append("\n");
+//                            Toast.makeText(getContext(), "", Toast.LENGTH_SHORT).show();
+//                        }
+//                        String finalData = sb.toString();
+//                        alltickets.setText(finalData);
+//                        Toast.makeText(getContext(), "final data is " + finalData, Toast.LENGTH_SHORT).show();
+//                    }
+//                });
+//            }
+//        });
+//    }
+public void getTicketInBakground() {
+    ExecutorService executorService = Executors.newSingleThreadExecutor();
+    Handler handler = new Handler(Looper.getMainLooper());
 
-        Handler handler = new Handler(Looper.getMainLooper());
+    executorService.execute(new Runnable() {
+        @Override
+        public void run() {
+            // Call getInstance to get the database instance
+            TicketDatabase ticketDatabase = TicketDatabase.getInstance(getContext());
 
-        executorService.execute(new Runnable() {
-            @Override
-            public void run() {
-                ticketArrayList = ticketDatabase.getTicketDAO().getTicket();
+            // Use the database instance to access DAO and perform operations
+            ticketArrayList = ticketDatabase.getTicketDAO().getTicket();
 
-                //
-                handler.post(new Runnable() {
-                    @Override
-                    public void run() {
-
-                        StringBuilder sb = new StringBuilder();
-                        for (Ticket t : ticketArrayList){
-                            sb.append(t.getPassanger_name() + " boarding: " +  t.train_body);
-                            sb.append("\n");
-                            Toast.makeText(getContext(), "", Toast.LENGTH_SHORT).show();
-                        }
-                        String finalData = sb.toString();
-                        alltickets.setText(finalData);
-                        Toast.makeText(getContext(), "final data is " + finalData, Toast.LENGTH_SHORT).show();
+            //
+            handler.post(new Runnable() {
+                @Override
+                public void run() {
+                    StringBuilder sb = new StringBuilder();
+                    for (Ticket t : ticketArrayList){
+                        sb.append(t.getPassanger_name() + " boarding: " +  t.train_body);
+                        sb.append("\n");
+                        Toast.makeText(getContext(), "", Toast.LENGTH_SHORT).show();
                     }
-                });
-            }
-        });
-    }
+                    String finalData = sb.toString();
+                    alltickets.setText(finalData);
+                    Toast.makeText(getContext(), "final data is " + finalData, Toast.LENGTH_SHORT).show();
+                }
+            });
+        }
+    });
+}
 
 }
