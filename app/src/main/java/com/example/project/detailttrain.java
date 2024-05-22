@@ -26,33 +26,34 @@ import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 
 public class detailttrain extends AppCompatActivity {
-    TextView headDetail, bodyDetail, priceDetail;
+    TextView bodyDetail;
     String ticketName, ticketAge, ticketGender, ticketPhoneNumber;
     Button save;
-    TicketDatabase ticketDatabase;
     FirebaseAuth auth;
     FirebaseUser user;
 
+    newTicketDatabase newTicketDatabase;
+
+    ArrayList<tm> tms = new ArrayList<>();
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_detailttrain);
-        headDetail = findViewById(R.id.priceDetail);
-        bodyDetail = findViewById(R.id.headDetail);
-        priceDetail = findViewById(R.id.bodyDetail);
+
+        bodyDetail = findViewById(R.id.bodyDetail);
         save = findViewById(R.id.detailSubmit);
 
         String head = getIntent().getStringExtra("head");
         String body = getIntent().getStringExtra("body");
         String price = getIntent().getStringExtra("price");
-        String date = "null";
+        String date = getIntent().getStringExtra("date");
 
-        headDetail.setText(price); // oh = b op = h ob =p
-        bodyDetail.setText(head);
-        priceDetail.setText(body);
+        bodyDetail.setText("Train Name: " + head + "\n " + body + "\n" + "Price: " + price + " Date: " + date);
+        String det = "Train detail: " + body + "\n" + "Price: " + price + " Date: " + date;
         auth = FirebaseAuth.getInstance();
         user = auth.getCurrentUser();
         String cuser = user.getEmail();
+
 
         RoomDatabase.Callback myCallBack = new RoomDatabase.Callback() {
             @Override
@@ -61,17 +62,22 @@ public class detailttrain extends AppCompatActivity {
             }
 
             @Override
+            public void onDestructiveMigration(@NonNull SupportSQLiteDatabase db) {
+                super.onDestructiveMigration(db);
+            }
+
+            @Override
             public void onOpen(@NonNull SupportSQLiteDatabase db) {
                 super.onOpen(db);
             }
         };
-
-        ticketDatabase = Room.databaseBuilder(getApplicationContext(), TicketDatabase.class, "TicketDB").addCallback(myCallBack).build();
+        newTicketDatabase = Room.databaseBuilder(getApplicationContext(), newTicketDatabase.class, "newTicketDatabase").addCallback(myCallBack).build();
 
         save.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                save = findViewById(R.id.detailSubmit);
+
+
                 TextInputLayout detailAge = findViewById(R.id.detailAge);
                 TextInputEditText detailAgeText = (TextInputEditText) detailAge.getEditText();
                 ticketAge = detailAgeText.getText().toString().trim();
@@ -88,17 +94,14 @@ public class detailttrain extends AppCompatActivity {
                 TextInputEditText detailPhoneText = (TextInputEditText) detailPhone.getEditText();
                 ticketPhoneNumber = detailPhoneText.getText().toString().trim();
 
-                Ticket t1 = new Ticket(cuser, head, body, price, date, ticketName, ticketAge, ticketPhoneNumber, ticketGender );
 
-                addTicketInBackground(t1);
-
-                Toast.makeText(detailttrain.this, "Save Button clicked", Toast.LENGTH_SHORT).show();
-
+                newTicket n1 = new newTicket(cuser, ticketName, ticketAge, ticketGender, ticketPhoneNumber, head, det);
+                addticket(n1);
             }
         });
 
     }
-    public void addTicketInBackground(Ticket ticket){
+    public void addticket(newTicket newTicket){
         ExecutorService executorService = Executors.newSingleThreadExecutor();
 
         Handler handler = new Handler(Looper.getMainLooper());
@@ -106,25 +109,18 @@ public class detailttrain extends AppCompatActivity {
         executorService.execute(new Runnable() {
             @Override
             public void run() {
-                try {
-                    ticketDatabase.getTicketDAO().addTicket(ticket);
+                newTicketDatabase.getnewTicketDAO().addticket(newTicket);
 
-                    //
-                    handler.post(new Runnable() {
-                        @Override
-                        public void run() {
-                            Toast.makeText(detailttrain.this, "Added to Database", Toast.LENGTH_SHORT).show();
-                            Intent intent = new Intent(getApplicationContext(), payment.class);
-                            startActivity(intent);
-                        }
-                    });
-                } catch (Exception e) {
-                    // If a migration error occurs, recreate the database
-                    ticketDatabase = TicketDatabase.getInstance(getApplicationContext());
-                    // Retry adding the ticket
-                    ticketDatabase.getTicketDAO().addTicket(ticket);
-                }
+                handler.post(new Runnable() {
+                    @Override
+                    public void run() {
+                        Toast.makeText(detailttrain.this, "Added Successfully", Toast.LENGTH_LONG).show();
+                        Intent in3 = new Intent(getApplicationContext(), payment.class);
+                startActivity(in3);
+                    }
+                });
             }
         });
     }
+
 }

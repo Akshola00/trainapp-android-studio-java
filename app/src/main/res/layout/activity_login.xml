@@ -109,7 +109,7 @@
             android:fontFamily="sans-serif-smallcaps"
             android:gravity="center"
             android:paddingTop="10dp"
-            android:text="Dont have an account ? Click to Sign up"
+            android:text="Don't have an account ? Click to Sign up"
             android:textSize="16sp" />
 
 

@@ -12,7 +12,7 @@
 
         <ProgressBar
             android:id="@+id/progressBar"
-            style="?android:attr/progressBarStyleHorizontal"
+            style="?android:attr/progressBarStyle"
             android:layout_width="321dp"
             android:layout_height="83dp"
             app:layout_constraintBottom_toBottomOf="parent"
@@ -35,7 +35,7 @@
             android:id="@+id/textView6"
             android:layout_width="411dp"
             android:layout_height="43dp"
-            android:fontFamily="sans-serif-smallcaps"
+            android:fontFamily="@font/cambo"
             android:gravity="center"
             android:paddingTop="10dp"
             android:text="SEARCH FOR TRAIN TICKETS"
@@ -46,28 +46,32 @@
 
         <LinearLayout
             android:id="@+id/linearLayout2"
-            android:layout_width="417dp"
-            android:layout_height="258dp"
+            android:layout_width="401dp"
+            android:layout_height="253dp"
             android:orientation="vertical"
             android:padding="20dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/textView6">
 
             <androidx.appcompat.widget.SearchView
                 android:id="@+id/accfrag_from"
                 android:layout_width="306dp"
                 android:layout_height="33dp"
+                android:layout_gravity="center_horizontal"
                 android:layout_margin="8dp"
                 android:background="@drawable/bgms"
                 app:iconifiedByDefault="false"
-                app:queryHint="To: Destination"
+                app:queryHint="From: Destination Code"
                 app:searchIcon="@drawable/redo">
 
             </androidx.appcompat.widget.SearchView>
 
             <ImageButton
                 android:id="@+id/accfrag_switch"
-                android:layout_width="309dp"
+                android:layout_width="41dp"
                 android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
                 android:background="@drawable/serachbg"
                 android:src="@drawable/change" />
 
@@ -75,28 +79,34 @@
                 android:id="@+id/accfrag_to"
                 android:layout_width="308dp"
                 android:layout_height="36dp"
+                android:layout_gravity="center_horizontal"
                 android:layout_margin="8dp"
                 android:background="@drawable/bgms"
                 app:iconifiedByDefault="false"
-                app:queryHint="From: Destination"
+                app:queryHint="To : Destination Code"
                 app:searchIcon="@drawable/undo">
 
             </androidx.appcompat.widget.SearchView>
 
             <EditText
                 android:id="@+id/editTextDate2"
-                android:layout_width="314dp"
+                android:layout_width="307dp"
                 android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:background="@drawable/bgms"
                 android:ems="10"
-                android:inputType="date" />
+                android:hint="Date (eg: 2024-05-15)"
+                android:inputType="date"
+                android:padding="5dp"
+                android:paddingStart="10dp" />
 
             <Button
                 android:id="@+id/accfrag_searchbtn"
                 android:layout_width="218dp"
                 android:layout_height="32dp"
-                android:layout_marginStart="50dp"
+                android:layout_gravity="center_horizontal"
                 android:layout_marginTop="10dp"
-                android:background="@color/white"
+                android:background="@drawable/bgsearch"
                 android:fontFamily="@font/ubuntu_mono"
                 android:text="Search"
                 android:textSize="18sp" />
@@ -109,6 +119,14 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             app:layout_constraintTop_toBottomOf="@+id/imageView5" />
+
+        <!--        <ProgressBar-->
+        <!--            android:id="@+id/progressBar2"-->
+        <!--            style="?android:attr/progressBarStyle"-->
+        <!--            android:layout_width="wrap_content"-->
+        <!--            android:layout_height="wrap_content"-->
+        <!--            tools:layout_editor_absoluteX="140dp"-->
+        <!--            tools:layout_editor_absoluteY="461dp" />-->
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </FrameLayout>

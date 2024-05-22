@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginStart="10dp"
+    android:layout_marginTop="10dp"
+    android:layout_marginEnd="10dp">
+
+    <ImageView
+        android:id="@+id/imv"
+        android:layout_width="48dp"
+        android:layout_height="48dp"
+        android:layout_marginRight="14dp"
+        android:src="@drawable/trainrowview" />
+
+    <TextView
+        android:id="@+id/textView7"
+        android:layout_width="322dp"
+        android:layout_height="wrap_content"
+        android:layout_toRightOf="@id/imv"
+        android:text="About Ticket" />
+
+    <TextView
+        android:id="@+id/alltext"
+        android:layout_width="325dp"
+        android:layout_height="150dp"
+        android:layout_below="@id/textView7"
+        android:layout_toEndOf="@id/imv"
+        android:fontFamily="@font/cambo"
+        android:text="2024-03-06"
+        android:textColor="@color/black"
+        android:textSize="12sp" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:layout_below="@id/alltext"
+        android:layout_marginTop="10dp"
+        android:background="#5E3636" />
+</RelativeLayout>
